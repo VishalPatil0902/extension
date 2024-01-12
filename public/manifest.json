@@ -1,6 +1,6 @@
 {
   "manifest_version":3,
-  "name":"chrome Extension Demo",
+  "name":"GenAI Extension",
   "description": "React Chrome Extension",
   "version":"1.0.0",
   "action":{
@@ -8,7 +8,7 @@
      "default_title":"Open"
   },
   "permissions": [
-    "sidePanel","activeTab"
+    "sidePanel","activeTab","tabs"
   ],
 
   "side_panel": {

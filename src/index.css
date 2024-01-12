@@ -5,12 +5,34 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  min-width: 400px;
-  min-height: 600px;
-  background-color: plum;
+  background-color: rgb(0, 0, 0);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+/* CSS for the button */
+.neonButton {
+  display: inline-block;
+  width: 90%;
+  letter-spacing: 2px;
+  height: 23px;
+  color: #4cc929;
+  border: solid 0.5px #4cc929;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  background-color: transparent;
+  box-shadow: 0 0 3px #000;
+  border-radius: 15px;
+  transition: all 0.3s;
+}
+
+.neonButton:hover{
+  background-color: #4cc929;
+  color: #fff;
+  box-shadow: 0 0 2px #4cc929;
 }
