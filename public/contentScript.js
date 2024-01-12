@@ -1,28 +1,39 @@
-// contentScript.js
+/* global chrome */
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === "scrape") {
-    // Your scraping logic here
+    const mainContent = [];
 
-    // Example: Scrape all divs, h tags, and p tags
-    const divs = Array.from(document.querySelectorAll("div")).map(
-      (div) => div.outerHTML
-    );
-    const headings = Array.from(
-      document.querySelectorAll("h1, h2, h3, h4, h5, h6")
-    ).map((heading) => heading.outerHTML);
-    const paragraphs = Array.from(document.querySelectorAll("p")).map(
-      (paragraph) => paragraph.outerHTML
+    // Get all h1, h2, h3, p, span, and li elements, excluding those within nav or footer themselves
+    const elements = document.querySelectorAll(
+      "body > :not(nav):not(footer) h1, body > :not(nav):not(footer) h2, body > :not(nav):not(footer) h3, body > :not(nav):not(footer) p, body > :not(nav):not(footer) span, body > :not(nav):not(footer) li"
     );
 
-    // Combine the scraped data
-    const scrapedData = {
-      divs: divs,
-      headings: headings,
-      paragraphs: paragraphs,
-    };
+    // Iterate through the elements and merge h1/h2/h3 with the following p/span, excluding those with less than or equal to 4 words
+    for (let i = 0; i < elements.length; i++) {
+      const currentElement = elements[i];
+      let mergedText = currentElement.innerText;
 
-    // Send the scraped data back to the sidebar
-    sendResponse({ data: scrapedData });
+      if (mergedText.split(" ").length > 4) { // Check for more than 4 words
+        if (
+          (currentElement.tagName === "H1" ||
+            currentElement.tagName === "H2" ||
+            currentElement.tagName === "H3") &&
+          elements[i + 1] &&
+          (elements[i + 1].tagName === "P" ||
+            elements[i + 1].tagName === "SPAN" ||
+            elements[i + 1].tagName === "LI")
+        ) {
+          mergedText += " " + elements[i + 1].innerText;
+          i++; // Skip the next element since it's already merged
+        }
+
+        mainContent.push(mergedText);
+      }
+    }
+
+    sendResponse({ data: mainContent });
   }
 });
+
+

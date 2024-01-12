@@ -25,15 +25,20 @@ export default function Extraction() {
       // Send a message to the content script to initiate scraping
       chrome.tabs.sendMessage(activeTabId, { action: "scrape" }, (response) => {
         console.log(response);
-        setCode(JSON.stringify(response));
+        setCode(response);
       });
     });
   };
 
   return (
     <>
-      <button onClick={handleScrape}>Get Page HTML</button>
-      <div style={{ color: "#fff" }}>{JSON.stringify(code)}</div>
+      <button className="neonButton" style={{marginTop: '10px'}} onClick={handleScrape}>Get HTML</button>
+      {/* <div style={{ color: "#fff" }}>{JSON.stringify(code)}</div> */}
+      {
+        code && code.data.map((text)=>(
+          <p style={{color: '#fff'}}>{text}</p>
+        ))
+      }
     </>
   );
 }
