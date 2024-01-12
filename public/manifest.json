@@ -8,10 +8,12 @@
      "default_title":"Open"
   },
   "permissions": [
-    "sidePanel","activeTab","tabs"
+    "sidePanel","activeTab","tabs","scripting","*://*/*"
   ],
 
   "side_panel": {
     "default_path": "index.html"
   }
+
+ 
 }
