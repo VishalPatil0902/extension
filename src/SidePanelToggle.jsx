@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-const SidePanelToggle = () => {
-
+const SidePanelToggle = ({ getURL, setURL }) => {
   return (
-    <button className='neonButton' >
-        Get Started
-     </button>
+    <button className="neonButton" onClick={() => setURL(!getURL)}>
+      Get Started
+    </button>
   );
 };
 
