@@ -4,18 +4,20 @@
   "description": "React Chrome Extension",
   "version": "1.0.0",
   "action": {
-    "default_popup": "index.html",
-    "default_title": "Open"
+    "default_title": "Open TO use GenAI"
   },
   "permissions": [
     "sidePanel",
     "activeTab",
     "tabs",
     "scripting",
-    "http://*/*",
-    "https://*/*"
+    "*//*/*",
+    "contextMenus"
   ],
 
+  "background": {
+    "service_worker": "serviceworker.js"
+  },
   "side_panel": {
     "default_path": "index.html"
   },

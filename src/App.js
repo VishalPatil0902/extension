@@ -6,6 +6,7 @@ import Extraction from "./pages/scripting/Extraction";
 
 function App() {
   let [getURL, setURL] = useState(0);
+  
   return (
     <div className="App">
       <ActiveTabURL getURL={getURL} />
