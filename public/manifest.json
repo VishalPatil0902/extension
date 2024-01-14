@@ -3,8 +3,18 @@
   "name": "GenAI Extension",
   "description": "React Chrome Extension",
   "version": "1.0.0",
+  "icons":{
+      "16" : "16X16.png",
+      "32":"32X32.png",
+      "48":"48X48.png",
+      "128":"128X128.png"
+  },
   "action": {
-    "default_title": "Open TO use GenAI"
+    "default_title": "Open TO use GenAI",
+    "default_icon": {
+      "16": "16X16.png",
+      "32": "32X32.png"
+    }
   },
   "permissions": [
     "sidePanel",
