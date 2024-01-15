@@ -5,7 +5,7 @@ import { SearchIcon,ChatIcon } from '@chakra-ui/icons'
 const Search = ({onNewChat}) => {
   return (
     <Stack direction='row' spacing={3} width='100%' marginTop='0.5rem'>
-      <Button leftIcon={<ChatIcon />} colorScheme='teal' variant='solid' width='100%' onClick={onNewChat}>
+      <Button leftIcon={<ChatIcon />} bg={'#6fa6cb'} color={'#fff'} variant='solid' width='100%' onClick={onNewChat}>
         New Chat
       </Button>
       <Button rightIcon={<SearchIcon />} colorScheme='blue' variant='solid' width='100%'>
