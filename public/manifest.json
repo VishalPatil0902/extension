@@ -11,10 +11,9 @@
     "activeTab",
     "tabs",
     "scripting",
-    "*//*/*",
+    "/*/*",
     "contextMenus"
   ],
-
   "background": {
     "service_worker": "serviceworker.js"
   },
@@ -24,7 +23,11 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["contentScript.js"]
+      "js": ["worker.min.js","contentScript.js"]
     }
-  ]
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval' http://localhost:* http://127.0.0.1:*"
+  }
+  
 }
