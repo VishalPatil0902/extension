@@ -49,7 +49,7 @@ const Home = ({ messages, setMessages }) => {
         maxHeight='75%'
         overflowY='scroll'
         overflowX='hidden'
-        height='80%'
+        height='90%'
         css={{
           '&::-webkit-scrollbar': {
             width: '4px',
@@ -69,12 +69,12 @@ const Home = ({ messages, setMessages }) => {
           return (
             <Card
               direction='row'
-              overflow='hidden'
               variant={message.isBot ? 'outline':null}
               bg=''
               marginTop='1rem'
               height='fit-content'
               key={index}
+              style={{ wordWrap: 'break-word' }}
               css={
                 message.isBot ? {
                   background: '#406176',
@@ -100,8 +100,13 @@ const Home = ({ messages, setMessages }) => {
                 bg='red'
               />
 
-              <CardBody p='0.5rem'>
-                <Text textAlign='left' fontFamily='Poppins' color={message.isBot ? 'white' : 'white'} fontWeight='600'>
+              <CardBody p='0.5rem'  style={{ overflowWrap: 'break-word', wordBreak: 'break-all' }}>
+                <Text
+                  textAlign='left'
+                  fontFamily='Poppins'
+                  color={message.isBot ? 'white' : 'white'}
+                  fontWeight='600'
+                >
                   {message.text}
                 </Text>
               </CardBody>
@@ -136,7 +141,7 @@ const Home = ({ messages, setMessages }) => {
                 bg='red'
               />
 
-              <CardBody p='0.5rem'>
+              <CardBody p='0.5rem' >
                 <Text textAlign='left' fontFamily='Poppins' color={'black'} fontWeight='600'>
                     <DNA
                     visible={true}
@@ -176,6 +181,7 @@ const Home = ({ messages, setMessages }) => {
                 borderRadius: '24px',
               },
             }}
+
             value={input}
             onChange={(e) => { setInput(e.target.value) }}
           />
