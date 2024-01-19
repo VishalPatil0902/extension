@@ -1,11 +1,6 @@
 /* global chrome */
 
 import React, { useState } from "react";
-import { TogetherAI } from "@langchain/community/llms/togetherai";
-import { MemoryVectorStore } from "langchain/vectorstores/memory";
-import { HuggingFaceInferenceEmbeddings } from "langchain/embeddings/hf";
-import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
-import {ConversationalRetrievalQAChain} from 'langchain/chains';
 
 export default function Extraction() {
   const [code, setCode] = useState("");
