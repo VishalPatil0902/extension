@@ -54,7 +54,7 @@ const WebChat = ({ messages, setMessages }) => {
 
     } catch (error) {
       console.log(error);
-      navigate(`/error/try-again/chat/website/conversation`);
+      navigate(`/error/try-again/chat-website-conversation`);
     }
   }
 
@@ -83,7 +83,7 @@ const WebChat = ({ messages, setMessages }) => {
 
         return cleanedContent;
       } catch (error) {
-        navigate(`/error/try-again/chat/website/conversation`);
+        navigate(`/error/try-again/chat-website-conversation`);
         console.error("Error:", error);
       }
     }
@@ -138,6 +138,12 @@ const WebChat = ({ messages, setMessages }) => {
 
   return (
     <Box height='80%'>
+      <Button onClick={()=> {
+        setPageLoading(true);
+        setMemoryStore(false);
+        handleScrape();
+      }} 
+      width={'100%'} colorScheme='red'>Add CUrrent Website</Button>
       <Box
         bg='#121b21'
         marginBottom='1rem'

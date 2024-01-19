@@ -24,7 +24,7 @@ const Search = ({ onNewChat, Extracte }) => {
 
 
   const handleScrape = () => {
-    navigate("/chat/website/conversation");
+    navigate("/chat-website-conversation");
     // chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     //   const activeTabId = tabs[0].id;
     //   const activeTabUrl = tabs[0].url; // Extract the URL of the active tab

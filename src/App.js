@@ -40,8 +40,8 @@ function App() {
           <Search onNewChat={handleNewChat} />
           <Routes>
             <Route exact path="/" element={<Home messages={messages} setMessages={setMessages} />} />
-            <Route exact path="/chat/website/conversation" element={<WebChat messages={messages} setMessages={setMessages} />} />
-            <Route exact path="/error/try-again/:url" element={<ErrorComponent/>} />
+            <Route exact path="/chat-website-conversation" element={<WebChat messages={messages} setMessages={setMessages} />} />
+            <Route path="/error/try-again/:url" element={<ErrorComponent/>} />
 
           </Routes>
           <Bottom />

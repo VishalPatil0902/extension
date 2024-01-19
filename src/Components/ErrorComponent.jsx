@@ -1,16 +1,17 @@
 import React from 'react';
 import { Box, Heading, Text, Link } from '@chakra-ui/react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-const ErrorComponent = ({ url }) => {
+const ErrorComponent = () => {
   const navigate = useNavigate();
-
+  const { url } = useParams();
+  console.log(url);
   const handleTryAgain = () => {
-    navigate('/'+url);
+    navigate('/' + url);
   };
 
   return (
-    <Box textAlign="center" p={8}>
+    <Box height='80%' textAlign="center" p={8}>
       <Heading as="h2" size="lg" mb={4}>
         Oops! Something went wrong.
       </Heading>
