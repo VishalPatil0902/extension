@@ -138,12 +138,7 @@ const WebChat = ({ messages, setMessages }) => {
 
   return (
     <Box height='80%'>
-      <Button onClick={()=> {
-        setPageLoading(true);
-        setMemoryStore(false);
-        handleScrape();
-      }} 
-      width={'100%'} colorScheme='red'>Add CUrrent Website</Button>
+      
       <Box
         bg='#121b21'
         marginBottom='1rem'
@@ -168,6 +163,12 @@ const WebChat = ({ messages, setMessages }) => {
           },
         }}
       >
+        <Button onClick={()=> {
+        setPageLoading(true);
+        setMemoryStore(false);
+        handleScrape();
+      }} 
+      width={'100%'} height={'30px'} colorScheme='teal'>Add Current Website</Button>
 
 
         {messages.map((message, index) => {
@@ -296,8 +297,6 @@ const WebChat = ({ messages, setMessages }) => {
           </InputRightElement>
         </InputGroup>
       </Box>
-
-      {/* //inputboxends */}
     </Box>
   );
 };
