@@ -25,22 +25,14 @@ function createArrayWithIds(n) {
   return resultArray;
 }
 
-const WebChat = ({ messages, setMessages }) => {
+const PDFChat = ({ messages, setMessages }) => {
 
   const msgEnd = useRef(null);
   const [loading, setLoading] = useState(false);
   const [input, setInput] = useState("");
   const [pageLoading, setPageLoading] = useState(true);
   const [memoryStore, setMemoryStore] = useState(false);
-  const [chain, setChain] = useState(false);
   const navigate = useNavigate();
-
-  const model = new TogetherAI({
-    modelName: "NousResearch/Nous-Hermes-Llama2-13b",
-    apiKey: "a8820b4b38ad46999e38b4c8d41f9e2c36bc6aeae0c5c623efa93960dbc2b85",
-    temperature: 0.1,
-    maxTokens: 1024,
-  });
 
   const createMemoryVectoreStore = async (textData) => {
     try {
@@ -57,12 +49,6 @@ const WebChat = ({ messages, setMessages }) => {
         ids,
         embeddings
       );
-      const chain = ConversationalRetrievalQAChain.fromLLM(
-        model,
-        vectorStore.asRetriever(),
-        { returnSourceDocuments: false }
-      );
-      setChain(chain);
       setMemoryStore(vectorStore);
       console.log('Memory Store Created');
 
@@ -73,6 +59,8 @@ const WebChat = ({ messages, setMessages }) => {
   }
 
   const handleScrape = () => {
+
+    // Instead of scraping, extract PDF DATA 
 
     chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
       const activeTabUrl = tabs[0].url;
@@ -119,21 +107,11 @@ const WebChat = ({ messages, setMessages }) => {
       { text, isBot: false }
     ]);
     setLoading(true);
-    // const ans = await memoryStore.similaritySearch(text, 1);
-    var ans = "";
-    try {
-      ans = await chain.call({
-        question: text,
-        chat_history: "",
-      });
-    } catch (error) {
-      ans = {text: "Sorry, I cannot reach the server at this moment :( \n Try Again Later \n Sorry For Inconvenience"}
-    }
-    
+    const ans = await memoryStore.similaritySearch(text, 1);
     console.log(ans);
     setMessages((prevMessages) => [
       ...prevMessages,
-      { text: ans.text, isBot: true }
+      { text: ans[0].pageContent, isBot: true }
     ]);
     setLoading((x) => false);
 
@@ -325,4 +303,4 @@ const WebChat = ({ messages, setMessages }) => {
   );
 };
 
-export default WebChat;
+export default PDFChat;

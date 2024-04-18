@@ -10,6 +10,7 @@ import Home from "./pages/Home/Home";
 import Search from "./Components/Search";
 import Bottom from "./Components/Bottom";
 import WebChat from "./pages/Chat-Website/WebChat";
+import PDFChat from "./pages/Chat-PDF/PDFChat";
 import ErrorComponent from "./Components/ErrorComponent";
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Home messages={messages} setMessages={setMessages} />} />
             <Route exact path="/chat-website-conversation" element={<WebChat messages={messages} setMessages={setMessages} />} />
+            <Route exact path="/chat-pdf-conversation" element={<WebChat messages={messages} setMessages={setMessages} />} />
             <Route path="/error/try-again/:url" element={<ErrorComponent/>} />
 
           </Routes>
